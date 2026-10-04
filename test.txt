@@ -10,3 +10,6 @@ no a kdyz to chces commitnout:
 
 vidis vsechny repa v adresari..
 chci commitnout tboi-upgrader
+
+ez
+ted vidis zelenou caru pod kazdym novym radkem + M jako modified
