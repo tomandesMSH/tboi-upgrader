@@ -114,6 +114,12 @@ function ui.Pressed(player, name)
     return false
 end
 
+-- Papirek s textem jako u Rules Card / fortune (herni HUD, zadny png).
+-- Kazdy argument je jeden radek; drz je kratke (~20 znaku), stejne jako texty v rules.txt.
+function ui.ShowPaper(...)
+    Game():GetHUD():ShowFortuneText(...)
+end
+
 -- prehraje zvuk podle jmena z SoundEffect, pokud existuje
 function ui.Sound(name)
     local id = SoundEffect[name]

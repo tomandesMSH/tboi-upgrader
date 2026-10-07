@@ -81,14 +81,15 @@ function change.RollWinner(slot, rng)
     return rng:RandomInt(#slot.items) + 1
 end
 
--- Ruleta: zakladni sance podle skoku kvality (cil - vsazeny item) + bonus za Luck.
-change.JUMP_CHANCE = {
-    [-4] = 0.95, [-3] = 0.95, [-2] = 0.9, [-1] = 0.85,
-    [0] = 0.7,
-    [1] = 0.45,
-    [2] = 0.2,
-    [3] = 0.08, -- napr. Q1 -> Q4
-    [4] = 0.03, -- Q0 -> Q4
+-- Ruleta: zakladni sance podle kvality vsazeneho itemu (radek) a ciloveho itemu (sloupec) + bonus za Luck.
+-- Skoky do Q4 jsou schvalne hodne vzacne, Q4 itemy jsou oproti Q3 brutalni.
+change.WIN_CHANCE = {
+    --       Q0    Q1    Q2    Q3    Q4
+    [0] = { 0.70, 0.45, 0.20, 0.08, 0.01 },
+    [1] = { 0.85, 0.70, 0.45, 0.20, 0.03 },
+    [2] = { 0.90, 0.85, 0.70, 0.45, 0.06 },
+    [3] = { 0.95, 0.90, 0.85, 0.70, 0.12 },
+    [4] = { 0.95, 0.95, 0.90, 0.85, 0.70 },
 }
 change.LUCK_PER_POINT = 0.02 -- +2 % za kazdy bod Lucku (zaporny Luck sanci snizuje)
 change.MIN_CHANCE = 0.01
@@ -96,8 +97,10 @@ change.MAX_CHANCE = 0.95
 
 -- vrati: celkova sance, zakladni sance, bonus za luck, skok kvality
 function change.GetWinChance(player, sourceId, targetId)
-    local jump = items.GetQuality(targetId) - items.GetQuality(sourceId)
-    local base = change.JUMP_CHANCE[jump] or 0.5
+    local sourceQuality, targetQuality = items.GetQuality(sourceId), items.GetQuality(targetId)
+    local jump = targetQuality - sourceQuality
+    local row = change.WIN_CHANCE[sourceQuality]
+    local base = row and row[targetQuality + 1] or 0.5
     local luck = player.Luck * change.LUCK_PER_POINT
     local chance = math.max(change.MIN_CHANCE, math.min(change.MAX_CHANCE, base + luck))
     return chance, base, luck, jump

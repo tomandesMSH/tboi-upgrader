@@ -6,6 +6,7 @@ yanaaaomg - design:
 
 * Logo active/pocket itemu (32x32, gfx/items/collectibles/upgrader.png)
 * Text "Choose your destiny, bez pozadí (222x12, banner_destiny.png)
+* Switch - na main obrazovce. misto chestky tam bude mala ruleta.
 * Rámeček chlívečku - normální stav (128x56, slot_frame_empty.png)
 * Rámeček chlívečku - vybraný stav (128x56, slot_frame_selected.png), červený (r.i.p wildcard)
 * Ikony kvality 0-4 ve stylu EID, 5 ikon vedle sebe v jednom souboru (60x12, každá 12x12, quality_icons.png)
@@ -15,6 +16,7 @@ yanaaaomg - design:
 * Text "Choose an item to bet", bez pozadí (výška 12, šířka podle textu)
 * Text "Upgrade" (nadpis obrazovky s kolem), bez pozadí (výška 12, šířka podle textu)
 * Texty "You win!" a "You lose...", bez pozadí (výška 12, šířka podle textu)
+* Přepínač modu v menu výběru postavy (128x72, gfx/ui/main menu/switch.png) - zatím převzatý z Completion Marks Recap Screen, nutno nahradit vlastním. Rozložení: papírek 64x48 vlevo nahoře, ikony 24x24 vpravo (zavřená truhla = vypnuto, otevřená = zapnuto, prázdná klávesa)
 * (volitelně) Pozadí obrazovek místo zčernání (480x270), např. místnost jako v mockupu
 * Preview/thumbnail pro Steam Workshop (1280x720)
 * Description header banner (600x150)
