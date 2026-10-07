@@ -1,0 +1,3 @@
+<items gfxroot="gfx/items/" version="1">
+    <active name="Item Upgrader" description="What do you want to do with the item?" gfx="upgrader.png" maxcharges="0" chargetype="normal" quality="2" />
+</items>

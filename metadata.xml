@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+    <name>Item Upgrader</name>
+    <directory>!!upgrader</directory>
+    <description>Aktivni item, ktery otevre nabidku pro upgrade / duplikaci itemu.</description>
+    <version>0.1</version>
+    <visibility>Private</visibility>
+</metadata>
