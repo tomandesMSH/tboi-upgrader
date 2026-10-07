@@ -56,14 +56,20 @@ end
 -- ikona kvality 0-4 ve stylu EID
 -- Pixel art se kresli jen v celociselnem zvetseni a na cele pixely, jinak ma pixely ruzne siroke
 -- a ikona pusobi rozmazane / mimo stred.
+-- V quality_icons.png je kazda ikona 9x9 v bunce 12x12 od pixelu (1, 1), jeji stred je tedy 5.5,
+-- ale pivot v anm2 je 6 -> posuneme o rozdil, aby byla ikona presne na (x, y).
+local QUALITY_ICON_CENTER = 5.5
+local QUALITY_ANM2_PIVOT = 6
+
 function ui.DrawQuality(quality, x, y, scale)
     local _, _, u = ui.GetLayout()
     local s = math.max(1, math.floor((scale or 1) * u + 0.5))
     local pos = ui.Pos(x, y)
+    local fix = (QUALITY_ANM2_PIVOT - QUALITY_ICON_CENTER) * s
     qualityIcons:SetFrame("Idle", quality)
     qualityIcons.Scale = Vector(s, s)
     qualityIcons.Color = Color(1, 1, 1, 1)
-    qualityIcons:Render(Vector(math.floor(pos.X + 0.5), math.floor(pos.Y + 0.5)))
+    qualityIcons:Render(Vector(math.floor(pos.X + fix + 0.5), math.floor(pos.Y + fix + 0.5)))
 end
 
 -- text vycentrovany na (x, y)
